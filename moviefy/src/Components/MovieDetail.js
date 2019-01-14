@@ -45,7 +45,11 @@ class MoviesDetail extends Component {
         <MovieInfo>
           {/* Overdrive is what creates our animations for the page, requires a unique id */}
           <Overdrive id={movie.id}>
-            <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+            {movie.poster_path ? (
+              <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+            ) : (
+              <p>IMAGE UNAVAIABLE</p>
+            )}
           </Overdrive>
           <div>
             <h1>{movie.title}</h1>

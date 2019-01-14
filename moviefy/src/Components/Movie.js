@@ -10,7 +10,11 @@ const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const Movie = ({ movie }) => (
   <Link to={`/id/${movie.id}`}>
     <Overdrive id={movie.id}>
-      <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+      {movie.poster_path ? (
+        <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+      ) : (
+        <p>IMAGE UNAVAIABLE</p>
+      )}
     </Overdrive>
   </Link>
 );
