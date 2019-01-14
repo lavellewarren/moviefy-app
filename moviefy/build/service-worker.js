@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Moviefy/./precache-manifest.fea56ee972c1370992c81d55c0d529b8.js"
+  "/Moviefy/./precache-manifest.8ea2414d1fd661f078ecaab52a54e241.js"
 );
 
 workbox.clientsClaim();
