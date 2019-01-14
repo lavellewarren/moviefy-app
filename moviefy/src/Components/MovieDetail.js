@@ -11,6 +11,7 @@ class MoviesDetail extends Component {
     movie: {},
   };
 
+  // This is a test
   async componentDidMount() {
     try {
       const { match } = this.props;
