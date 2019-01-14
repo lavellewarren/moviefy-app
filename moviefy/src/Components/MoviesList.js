@@ -46,7 +46,6 @@ class MoviesList extends PureComponent {
   };
 
   render() {
-    // Test
     const { movies, movieSearch } = this.state;
     return (
       <div>
