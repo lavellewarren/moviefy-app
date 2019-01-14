@@ -1,41 +1,32 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import styled from 'styled-components';
+import {
+  BrowserRouter as Router, Route, Switch, Link,
+} from 'react-router-dom';
 import './App.css';
 
-import Movie from './Components/Movie';
+import MoviesList from './Components/MoviesList';
+import MovieDetail from './Components/MovieDetail';
 
-class App extends Component {
-  state = {
-    movies: [],
-  };
-
-  async componentDidMount() {
-    try {
-      const result = await fetch(
-        'https://api.themoviedb.org/3/discover/movie?api_key=2a208bd9217b421273ab1506025ce6e6&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
-      );
-      const movies = await result.json();
-      this.setState({
-        movies: movies.results,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  render() {
-    const { movies } = this.state;
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>MOVIEFY</h1>
-        </header>
-        {movies.map(movie => (
-          <Movie key={movie.id} movie={movie} />
-        ))}
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div className="App">
+      <header className="App-header">
+        <Link to="/">
+          <PageTitle>MOVIEFY</PageTitle>
+        </Link>
+      </header>
+      <Switch>
+        <Route exact path="/" component={MoviesList} />
+        <Route path="/:id" component={MovieDetail} />
+      </Switch>
+    </div>
+  </Router>
+);
 
 export default App;
+
+const PageTitle = styled.h1`
+  text-decoration: none;
+  color: white;
+`;
