@@ -39,7 +39,7 @@ class MoviesDetail extends Component {
           <div>
             <h1>{movie.title}</h1>
             <p>{movie.overview}</p>
-            <h3>{movie.release_date}</h3>
+            <h3>{`ReleaseDate: ${movie.release_date}`}</h3>
           </div>
         </MovieInfo>
       </MovieWrapper>
