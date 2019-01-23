@@ -2,19 +2,23 @@ import React from 'react';
 import { render, cleanup, waitForElement } from 'react-testing-library';
 import MovieDetail, { POSTER_PATH } from '../Components/MovieDetail';
 
+// Initialize jest-fetch-mock for mock api calls
 global.fetch = require('jest-fetch-mock');
 
+// After each test, clear the mockErrors
 afterEach(() => {
   cleanup();
   console.error.mockClear();
 });
 
+// This builds out the fake mock route that the compnents utilizies
 const match = {
   params: {
     id: 'hello',
   },
 };
 
+// This is the fake json object we would recieve from our API
 const movie = {
   id: 'hi',
   title: 'Star Wars',
