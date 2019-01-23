@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Poster } from './Movie';
 
 // Poster_path is the url extension to access the movies poster image
-const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
+export const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 // Backdrop_path is the url extension to acess the movies backdrop image
 const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
 
@@ -40,6 +40,8 @@ class MoviesDetail extends Component {
   render() {
     // Grab the movie out of our state
     const { movie } = this.state;
+    if (!movie.id) return null;
+
     return (
       // Our div is styled to have a background of the movie backdrop from our repsonse
       <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
@@ -53,7 +55,7 @@ class MoviesDetail extends Component {
             )}
           </Overdrive>
           <div>
-            <h1>{movie.title}</h1>
+            <h1 data-testid="movie-title">{movie.title}</h1>
             <p>{movie.overview}</p>
             <h3>{`ReleaseDate: ${movie.release_date}`}</h3>
           </div>
