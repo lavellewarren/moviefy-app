@@ -31,7 +31,6 @@ class MoviesDetail extends Component {
       this.setState({
         movie,
       });
-      console.log(movie);
     } catch (err) {
       throw err;
     }

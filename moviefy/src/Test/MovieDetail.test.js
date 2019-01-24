@@ -29,12 +29,13 @@ const movie = {
 // Mock Console Error
 console.error = jest.fn();
 
-// If No Props are passed to the movie than it will error out
 test('<MovieDetail>', async () => {
+  // Fake Api call to grab our movie data
   fetch.mockResponseOnce(JSON.stringify(movie));
 
-  const { debug, getByTestId } = render(<MovieDetail match={match} />);
+  const { getByTestId } = render(<MovieDetail match={match} />);
+  // await for the movie api call to fire first
   await waitForElement(() => getByTestId('movie-title'));
+  // We expect the text content of our movie title to be what comes from our api call
   expect(getByTestId('movie-title').textContent).toBe(movie.title);
-  debug();
 });
