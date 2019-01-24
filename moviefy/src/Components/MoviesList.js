@@ -16,6 +16,7 @@ class MoviesList extends Component {
         'https://api.themoviedb.org/3/discover/movie?api_key=2a208bd9217b421273ab1506025ce6e6&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
       );
       const movies = await result.json();
+      console.log(movies);
       this.setState({
         movies: movies.results,
       });
@@ -51,6 +52,7 @@ class MoviesList extends Component {
 
   render() {
     const { movies, movieSearch } = this.state;
+    if (movies < 1) return <h1 data-testid="loading">Loading</h1>;
     return (
       <div>
         <MovieSearchInput type="text" onChange={this.updateInput} value={movieSearch} />
