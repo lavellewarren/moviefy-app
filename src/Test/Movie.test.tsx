@@ -1,16 +1,19 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
 import { MemoryRouter } from 'react-router-dom';
-import Movie, { POSTER_PATH } from '../Components/Movie';
+import Movie, { MovieType, POSTER_PATH } from '../Components/Movie';
 
 afterEach(() => {
   cleanup();
 });
 
-const movie = {
+const movie: MovieType = {
   id: 'hi',
   title: 'test-title',
   poster_path: 'thisIsAPosterImage',
+  backdrop_path: 'backdropPath',
+  overview: 'some over view of movie',
+  release_date: 'some release date',
 };
 
 test('<Movie> with movie', () => {
@@ -23,7 +26,8 @@ test('<Movie> with movie', () => {
   expect(getByTestId('movie-link').getAttribute('href')).toBe(
     `/id/${movie.id}`,
   );
-  expect(getByTestId('movie-img').src).toBe(
+
+  expect(getByTestId('movie-img').getAttribute('src')).toBe(
     `${POSTER_PATH}${movie.poster_path}`,
   );
 });
