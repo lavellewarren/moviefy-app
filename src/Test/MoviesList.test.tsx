@@ -3,48 +3,46 @@ import { render, cleanup, waitForElement } from 'react-testing-library';
 import { MemoryRouter } from 'react-router-dom';
 import MoviesList from '../Components/MoviesList';
 import { POSTER_PATH } from '../Components/MovieDetail';
+import { MovieType } from '../Components/Movie';
 
 // Initialize jest-fetch-mock for mock api calls
 global.fetch = require('jest-fetch-mock');
 
-// After each test, clear the mockErrors
-afterEach(() => {
-  cleanup();
-  console.error.mockClear();
-});
-
-console.error = jest.fn();
-
-const movies = {
+const movies: { results: MovieType[] } = {
   results: [
     {
       id: '1',
       title: 'Star Wars',
       release_date: 'yesterday',
       poster_path: `${POSTER_PATH}PostImage`,
+      backdrop_path: 'backdropPath',
+      overview: 'some over view of movie',
     },
     {
       id: '2',
       title: 'New Movie',
       release_date: 'a while ago',
       poster_path: `${POSTER_PATH}NewMovie`,
+      backdrop_path: 'backdropPath',
+      overview: 'some over view of movie',
     },
     {
       id: '3',
       title: 'Second Movie',
       release_date: 'more a while ago',
       poster_path: `${POSTER_PATH}OldMovie`,
+      backdrop_path: 'backdropPath',
+      overview: 'some over view of movie',
     },
   ],
 };
 
 test('<MoviesList>', async () => {
+  /* @ts-ignore */
   fetch.mockResponseOnce(JSON.stringify(movies));
-  const {
-    debug, getByTestId, getAllByTestId, queryByTestId,
-  } = render(
+  const { getByTestId, getAllByTestId, queryByTestId } = render(
     <MemoryRouter>
-      <MoviesList movies={movies} />
+      <MoviesList />
     </MemoryRouter>,
   );
   expect(getByTestId('loading')).toBeTruthy();
