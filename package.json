@@ -1,8 +1,7 @@
 {
-  "name": "moviefy",
+  "name": "moviefy-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://thenoodlemoose.github.io/Moviefy/.",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "jest-fetch-mock": "^2.1.0",

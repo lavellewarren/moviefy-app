@@ -1,2 +1,2 @@
-# Movieify
-Movie Site Created With React
+# Movieify-App
+Movie Site Created With React and Styled Components
